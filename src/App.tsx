@@ -1,35 +1,31 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// import { useState } from 'react';
+import Input from './components/Input/Input';
+import './App.css';
+import Toast from './components/Toast/Toast';
 
 function App() {
-  const [count, setCount] = useState(0)
+  // const [value, setValue] = useState('');
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      {/*I don't really understand how that component suppose to work so i made
+      it the way the component save value inside. But if it shouldn't i comment parts 
+      for that exact case, but it's working weird and it won'y work without 'value' prop .*/}
+      <Input
+        value="123"
+        type={'password'}
+        clearable={false}
+        // onChange={setValue}
+        autocomplete="off"
+      />
+      <Toast
+        status="error"
+        message="yellow there"
+        duration={5000}
+        closable={true}
+      ></Toast>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

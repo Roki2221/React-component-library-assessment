@@ -1,0 +1,76 @@
+.toast {
+  padding: 1em;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  right: 50px;
+  bottom: 50px;
+  border-radius: 20px;
+  font-weight: 700;
+  min-width: 200px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+  /* Початковий стан (схований) */
+}
+.show {
+  animation: slideIn 0.3s ease forwards;
+}
+.hide {
+  animation: slideOut 0.3s ease forwards;
+}
+
+.error {
+  background-color: red;
+}
+.success {
+  background-color: green;
+}
+.info {
+  background-color: yellow;
+  color: black;
+}
+
+.button_close {
+  background: transparent;
+  border: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  cursor: default;
+}
+
+.button_close:focus {
+  outline: none;
+  border: none;
+}
+.button_close img {
+  width: 15px;
+  opacity: 0.5;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.button_close img:hover {
+  opacity: 1;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+}
