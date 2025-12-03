@@ -1,0 +1,63 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 9;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 260px;
+  height: 100vh;
+  background: red;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.15);
+  transform: translateX(80%);
+  transition: transform 0.25s ease;
+  z-index: 10;
+  padding: 20px;
+}
+
+.sidebar.open {
+  transform: translateX(0);
+}
+.sidebar.closed {
+  transform: translateX(80%);
+  padding: 0 calc(260px * 0.02);
+  cursor: pointer;
+}
+.menuIcon img {
+  width: calc(260px * 0.16);
+}
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.itemHeader {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  cursor: pointer;
+}
+
+.arrow {
+  transition: transform 0.2s;
+}
+
+.rotated {
+  transform: rotate(90deg);
+}
+
+.submenu {
+  margin-left: 15px;
+  padding-left: 10px;
+  border-left: 2px solid #ddd;
+}
+
+.submenuItem {
+  padding: 5px 0;
+  cursor: pointer;
+}

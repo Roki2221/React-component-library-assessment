@@ -1,0 +1,82 @@
+.Form {
+  position: relative;
+  display: inline-flex;
+  width: 100%;
+  max-width: 260px;
+}
+
+.Form_input {
+  width: 100%;
+  padding: 10px 38px 10px 12px;
+  font-size: 15px;
+  outline: none;
+
+  border: 1.5px solid #d3d3d3;
+  border-radius: 6px;
+  transition:
+    0.2s border-color,
+    0.2s box-shadow;
+
+  background: #fff;
+}
+
+.Form_input:focus {
+  border-color: #4a8bff;
+  box-shadow: 0 0 0 2px rgba(74, 139, 255, 0.2);
+}
+
+.Clearer_button,
+.Password_button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 20px;
+  height: 20px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 0;
+  margin: 0;
+
+  border: none;
+  background: none;
+  cursor: pointer;
+
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+.Clearer_button:focus,
+.Password_button:focus {
+  outline: none;
+  box-shadow: none;
+}
+.Clearer_button:hover,
+.Password_button:hover {
+  opacity: 1;
+}
+
+.Clearer_button {
+  right: 10px;
+}
+
+.Password_button {
+  right: 10px;
+}
+
+.Form .ButtonsTwo .Clearer_button {
+  right: 36px; /* Clear left */
+}
+
+.Form .ButtonsTwo .Password_button {
+  right: 10px; /* Eye right */
+}
+
+.Clearer_button img,
+.Password_button img {
+  width: 18px;
+  height: 18px;
+  pointer-events: none;
+}

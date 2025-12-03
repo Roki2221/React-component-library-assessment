@@ -1,73 +1,150 @@
-# React + TypeScript + Vite
+# React UI Component Library
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This repository contains a small React component library with Storybook, including:
 
-Currently, two official plugins are available:
+- Input (text, password with toggle, number, clearable)
+- Toast (success, error, info notifications)
+- SidebarMenu (sliding sidebar with nested items)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🚀 Setup Instructions
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+1. **Clone repository**
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+git clone https://github.com/Roki2221/React-component-library-assessment.git
+cd React-component-library-assessment
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. **Install dependencies**
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+# or
+yarn
 ```
+
+3. **Run Storybook (development)**
+
+```bash
+npm run storybook
+# or
+yarn storybook
+```
+
+Open `http://localhost:6006/` in your browser to view Storybook.
+
+4. **Build components / Storybook**
+
+```bash
+npm run build
+# or
+yarn build
+```
+
+Make sure your `package.json` has usual scripts like `start`, `storybook`, `build`, `lint`, `format`.
+
+---
+
+## 🧩 Component Overview
+
+### Input Component
+
+The Input component supports multiple types (`text`, `number`, `password`) and includes:
+
+- Password visibility toggle (eye icon)
+- Clearable input (`clearable` prop) — shows an "X" to clear the value
+- Autocomplete (`autocomplete` prop: "on" or "off")
+
+**Stories include:**
+
+- Text input
+- Password input (hidden)
+- Password input (visible)
+- Clearable combinations
+
+---
+
+### Toast Component
+
+The Toast component shows notifications in the bottom-right corner:
+
+- Supports statuses: `success`, `error`, `info`
+- Auto-dismisses after a given duration (`duration` prop in ms)
+- Optional manual close button (`closable`)
+- Fade/slide transition
+
+**Stories include:**
+
+- Success (closable)
+- Error (non-closable)
+- Info (different durations)
+
+---
+
+### SidebarMenu Component
+
+The SidebarMenu component is a sliding sidebar from the right:
+
+- Controlled via `open` prop
+- Overlay closes sidebar on background click (`onClose` callback)
+- Nested items supported (accordion or expandable children)
+
+**Stories include:**
+
+- Closed
+- Open with nested 2-level items
+
+---
+
+## 📁 Project Structure
+
+```
+src/
+├── components/
+│   ├── Input/
+│   │   ├── Input.tsx
+│   │   └── Input.module.css
+│   ├── Toast/
+│   │   ├── Toast.module.css
+│   │   └── Toast.tsx
+│   └── SidebarMenu/
+│       ├── SidebarMenu.tsx
+│       └── SidebarMenu.module.css
+├── stories/
+│       ├── Input.stories.tsx
+│       ├── Toast.stories.tsx
+│       └── SidebarMenu.stories.tsx
+└── App.tsx
+```
+
+---
+
+## 🖼 Screenshots
+
+## Input Component
+
+Text Input:
+![Text Input](./screenshots/input-text.png)
+
+Password Input with Clear button (password not visible):
+![Password Input](./screenshots/input-password-clear.png)
+
+Password Input with Clear button (password-visible):
+![Password Input](/screenshots/input-password-visible.png)
+
+## Toast Component
+
+Success Toast:
+![Success Toast](./screenshots/toast-success.png)
+
+Error Toast:
+![Error Toast](./screenshots/toast-error.png)
+
+## Sidebar Menu
+
+Closed:
+![Sidebar Closed](./screenshots/sidebar-closed.png)
+Open with Nested Items:
+![Sidebar Open](./screenshots/sidebar-open.png)

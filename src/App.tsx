@@ -2,10 +2,22 @@
 import Input from './components/Input/Input';
 import './App.css';
 import Toast from './components/Toast/Toast';
+import SidebarMenu from './components/SidebarMenu/SidebarMenu';
+
+const menuItems = [
+  { label: 'Dashboard', link: '/dashboard' },
+  {
+    label: 'Settings',
+    children: [
+      { label: 'Profile', link: '/profile' },
+      { label: 'Security', link: '/security' },
+    ],
+  },
+  { label: 'Logout', link: '/logout' },
+];
 
 function App() {
   // const [value, setValue] = useState('');
-
   return (
     <>
       {/*I don't really understand how that component suppose to work so i made
@@ -14,16 +26,19 @@ function App() {
       <Input
         value="123"
         type={'password'}
-        clearable={false}
+        clearable={true}
         // onChange={setValue}
         autocomplete="off"
       />
+
       <Toast
         status="error"
         message="yellow there"
-        duration={5000}
+        duration={1000}
         closable={true}
       ></Toast>
+
+      <SidebarMenu items={menuItems} />
     </>
   );
 }

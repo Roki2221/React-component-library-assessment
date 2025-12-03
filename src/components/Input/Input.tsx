@@ -4,7 +4,7 @@ import eyeOpenIcon from '../../icons/eye.svg';
 import eyeClosedIcon from '../../icons/eye-blocked.svg';
 import cross from '../../icons/cross.svg';
 
-type Inpute = {
+type Input = {
   type: 'text' | 'number' | 'password';
   // onChange: (value: string) => void;
   clearable?: boolean;
@@ -13,18 +13,18 @@ type Inpute = {
   autocomplete: 'on' | 'off';
 };
 
-function Input(props: Inpute) {
-  const [inputType, setInputeType] = useState(props.type);
-  const [inputValue, setInputeValue] = useState(props.value ?? '');
+function Input(props: Input) {
+  const [inputType, setInputType] = useState(props.type);
+  const [inputValue, setInputValue] = useState(props.value ?? '');
   return (
-    <form className={css.SearchForm}>
+    <form className={css.Form}>
       <input
-        className={css.SearchForm_input}
+        className={css.Form_input}
         type={inputType}
         placeholder={props.placeholder}
         value={inputValue}
         onChange={e => {
-          setInputeValue(e.target.value);
+          setInputValue(e.target.value);
           // onChange={e => {
           //   props.onChange(e.target.value);
         }}
@@ -34,7 +34,7 @@ function Input(props: Inpute) {
       {props.clearable === true && (
         <button
           type="button"
-          className={css.SearchForm_button}
+          className={css.clearer_button}
           onClick={() => {
             props.onChange('');
           }}
@@ -43,34 +43,43 @@ function Input(props: Inpute) {
         </button>
       )} */}
       {/* Clear button the old way with value in setState */}
-      {props.clearable === true && (
-        <button
-          type="button"
-          className={css.SearchForm_button}
-          onClick={() => {
-            setInputeValue('');
-          }}
-        >
-          <img src={cross} alt="" />
-        </button>
-      )}
+      <div
+        className={
+          props.clearable === true && props.type === 'password'
+            ? css.ButtonsTwo
+            : ''
+        }
+      >
+        {props.clearable === true && (
+          <button
+            type="button"
+            className={css.Clearer_button}
+            onClick={() => {
+              setInputValue('');
+            }}
+          >
+            <img src={cross} alt="" />
+          </button>
+        )}
 
-      {/* Password toggle */}
-      {props.type === 'password' && (
-        <button
-          type="button"
-          onClick={() => {
-            return inputType === 'password'
-              ? setInputeType('text')
-              : setInputeType('password');
-          }}
-        >
-          <img
-            src={inputType === 'password' ? eyeOpenIcon : eyeClosedIcon}
-            alt="password visibility"
-          />
-        </button>
-      )}
+        {/* Password toggle */}
+        {props.type === 'password' && (
+          <button
+            className={css.Password_button}
+            type="button"
+            onClick={() => {
+              return inputType === 'password'
+                ? setInputType('text')
+                : setInputType('password');
+            }}
+          >
+            <img
+              src={inputType === 'password' ? eyeOpenIcon : eyeClosedIcon}
+              alt="password visibility"
+            />
+          </button>
+        )}
+      </div>
     </form>
   );
 }

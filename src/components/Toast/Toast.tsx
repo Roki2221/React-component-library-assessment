@@ -36,6 +36,12 @@ function Toast(props: Toast) {
           <img src={cross} alt="close the toast" />
         </button>
       )}
+      <div
+        style={{
+          animationDuration: `${props.duration}ms`,
+        }}
+        className={css.timer}
+      ></div>
     </div>
   );
 }
