@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import css from './SidebarMenu.module.css';
-import SidebarMenuItem from '../../stories/SidebarMenuItem';
+import SidebarMenuItem from './SidebarMenuItem';
 import menu from '../../icons/menu.svg';
 
 export type MenuItem = {
