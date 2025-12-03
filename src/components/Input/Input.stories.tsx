@@ -12,7 +12,9 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    type: 'text',
-    clearable: true,
+    value: '123',
+    type: 'password',
+    clearable: false,
+    autocomplete: 'off',
   },
 };

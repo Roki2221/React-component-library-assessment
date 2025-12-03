@@ -6,6 +6,7 @@ import cross from '../../icons/cross.svg';
 
 type Inpute = {
   type: 'text' | 'number' | 'password';
+  // onChange: (value: string) => void;
   clearable?: boolean;
   value?: string;
   placeholder?: string;
@@ -14,25 +15,41 @@ type Inpute = {
 
 function Input(props: Inpute) {
   const [inputType, setInputeType] = useState(props.type);
-  // const handleClick = e => {
-  //   e.preventDefault();
-  //   onSubmit(e.currentTarget.elements.name.value);
-  // };
-
+  const [inputValue, setInputeValue] = useState(props.value ?? '');
   return (
     <form className={css.SearchForm}>
       <input
         className={css.SearchForm_input}
         type={inputType}
         placeholder={props.placeholder}
-        value={props.value}
+        value={inputValue}
+        onChange={e => {
+          setInputeValue(e.target.value);
+          // onChange={e => {
+          //   props.onChange(e.target.value);
+        }}
+        autoComplete={props.autocomplete}
       />
-      {/* Clear button */}
+      {/* Clear button another way if i shouldn`t save value in component
       {props.clearable === true && (
         <button
           type="button"
           className={css.SearchForm_button}
-          onClick={() => {}}
+          onClick={() => {
+            props.onChange('');
+          }}
+        >
+          <img src={cross} alt="" />
+        </button>
+      )} */}
+      {/* Clear button the old way with value in setState */}
+      {props.clearable === true && (
+        <button
+          type="button"
+          className={css.SearchForm_button}
+          onClick={() => {
+            setInputeValue('');
+          }}
         >
           <img src={cross} alt="" />
         </button>
